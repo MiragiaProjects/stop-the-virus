@@ -76,3 +76,39 @@ const startTimer = (virusPlace) => {
 	randomPlaceEl.addEventListener('click', stopTimer)
 	
 };
+
+// The countdown between rounds
+const countdownBeforeRound = (waitingTime, virusPlace) => {
+	
+	countdown--
+	
+	roundCountdownSpanEl.innerText = countdown
+
+	if (countdown === 0) {
+
+		clearInterval(countdownInterval)
+		roundCountdownEl.classList.add('hide')
+		placeEl.forEach(place => {
+			place.classList.remove('hide')
+		});
+
+		countdown = 2
+		roundCountdownSpanEl.innerText = countdown
+
+		setTimeout(startTimer, waitingTime, virusPlace)
+	
+	}
+};
+
+// New round
+const gameRound = (waitingTime, virusPlace) => {
+
+	placeEl.forEach(place => {
+		place.classList.remove('virus')
+		place.classList.add('hide')
+	})
+
+	roundCountdownEl.classList.remove('hide')
+	countdownInterval = setInterval(countdownBeforeRound, 1000, waitingTime, virusPlace)
+
+};
