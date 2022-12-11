@@ -112,3 +112,97 @@ const gameRound = (waitingTime, virusPlace) => {
 	countdownInterval = setInterval(countdownBeforeRound, 1000, waitingTime, virusPlace)
 
 };
+
+// Socket ons sent from backend
+socket.on('game:round', (winner, players) => {
+
+	const opponent = Object.values(players).find( player => player.username !== username)
+
+	clearInterval(opponentTimer)
+
+	opponentTimeEl.innerText = `${Math.floor(opponent.previousReactionTime/1000)} : ${opponent.previousReactionTime%1000}`
+	
+	if (winner === username) {
+		userScoreEl.innerText = `${username} score: ${++userScore}`
+		roundCountdownInfoEl.innerText = 'Oh, yes! You won the round!'
+		roundCountdownInfoEl.classList.add('won-round')
+		roundCountdownInfoEl.classList.remove('lost-round')
+
+	} else {
+		opponentScoreEl.innerText = `${opponent.username} score: ${++opponentScore}`
+		roundCountdownInfoEl.innerText = 'Oh, no. You lost the round!'
+		roundCountdownInfoEl.classList.add('lost-round')
+		roundCountdownInfoEl.classList.remove('won-round')
+	}
+});
+
+socket.on('game:start', (waitingTime, virusPlace) => {
+
+	waitingEl.classList.add('hide')
+	gameBoardEl.classList.remove('hide')
+
+	userScoreEl.innerText = `${username} score: ${userScore}`
+	opponentScoreEl.innerText = `${opponent} score: ${opponentScore}`
+
+	gameRound(waitingTime, virusPlace)
+});
+
+socket.on('game:leave', () => {
+	waitingEl.classList.add('hide')
+	gameBoardEl.classList.add('hide')
+	resultScreenEl.classList.remove('hide')
+
+	winnerEl.innerHTML = `You won the game!`
+	userResultEl.innerHTML = `Opponent disconnected`
+});
+
+socket.on('print:names', (players) => {
+
+	username = enterFormEl.username.value
+
+	const playerList = Object.values(players)
+	const playerNames = []
+
+	playerList.forEach( (player) => {
+		playerNames.push(player.username)
+	} )
+
+	const player1 = playerNames.indexOf(username)
+	playerNames.splice(player1, 1)
+	opponent = playerNames
+
+});
+
+socket.on('game:over', (playerOne, playerTwo) => {
+
+	waitingEl.classList.add('hide')
+	gameBoardEl.classList.add('hide')
+	resultScreenEl.classList.remove('hide')
+
+	 let self 
+	 if (playerOne.username === username) {
+	 	self = playerOne
+	 } else {
+	 	 self = playerTwo
+	 }
+
+	 let opponent
+	 if (playerOne.username === username) {
+	 	 opponent = playerTwo
+	 } else {
+	 	 opponent = playerOne
+	 }
+	
+	if(self.points > opponent.points) {
+		userResultEl.innerHTML = `Oh, yes! You won! Score: ${self.points} - ${opponent.points}`
+		userResultEl.classList.add('winResult')
+
+	} else if (opponent.points > self.points) {
+		userResultEl.innerHTML = `Oh, no! You lost! Score: ${self.points} - ${opponent.points}`
+		userResultEl.classList.add('loseResult')
+
+	} else if(self.points === opponent.points) {
+		userResultEl.innerHTML = `Oh. It's a tie! Score: ${self.points} - ${opponent.points}`
+	}
+})
+
