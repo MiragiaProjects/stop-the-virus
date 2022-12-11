@@ -53,3 +53,26 @@ const stopTimer = () => {
 	socket.emit('game:round-result', timePassed)
 };
 
+
+// Will start a new round and place the virus
+const startTimer = (virusPlace) => {
+	
+	timePassed = 0
+
+	beforeRound = Date.now()
+	userTimer = setInterval( () => {
+		timePassed = Date.now() - beforeRound
+		playerTimeEl.innerText = `${Math.floor(timePassed/1000)} : ${timePassed%1000}`
+	}, 10 )
+
+	opponentTimer = setInterval( () => {
+		let opponentTime = Date.now() - beforeRound
+		opponentTimeEl.innerText = `${Math.floor(opponentTime/1000)} : ${opponentTime%1000}`
+	}, 10 )
+
+	randomPlaceEl = placeEl[virusPlace]
+	randomPlaceEl.classList.add('virus')
+
+	randomPlaceEl.addEventListener('click', stopTimer)
+	
+};
