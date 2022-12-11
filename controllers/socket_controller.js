@@ -10,7 +10,14 @@ let queue = 0;
 
 let waitingTime = 0;       
 
-let virusPlace = null;    
+let virusPlace = null;
+
+
+// set a time and place a virus
+const timeAndPosition = () => {	
+	waitingTime = Math.round(Math.random()*4000 + 600);
+	virusPlace = Math.floor(Math.random() * 12);
+} 
 
 // User joining
 const userJoined = function(username, callback) {
