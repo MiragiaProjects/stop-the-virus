@@ -38,3 +38,18 @@ let randomPlaceEl = null
 let countdownInterval = null
 
 let countdown = 2
+
+
+// Will stop timer and see who won
+const stopTimer = () => {
+	
+	clearInterval(userTimer)
+	timePassed = Date.now() - beforeRound
+
+	playerTimeEl.innerText = `${Math.floor(timePassed/1000)} : ${timePassed%1000}`
+	randomPlaceEl.removeEventListener('click', stopTimer)
+	randomPlaceEl.classList.remove('virus')
+
+	socket.emit('game:round-result', timePassed)
+};
+
