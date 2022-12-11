@@ -90,3 +90,49 @@ const userDisconnect = function() {
 		this.broadcast.to(room).emit('game:leave');
 	}
 }
+
+// Compare times to se who won
+const userScore = function(reaction) {
+	
+	const room = rooms.find(lobby => lobby.players.hasOwnProperty(this.id));
+	room.players[this.id].previousReactionTime = reaction;
+
+	let foundNull = false;
+
+	Object.values(room.players).forEach( (player) => {
+		if (player.previousReactionTime === null) {
+			foundNull = true;
+		}
+	} )
+
+	// see if both players are done with round
+	if (!foundNull) {
+
+		const playerOne = Object.values(room.players)[0];
+		const playerTwo = Object.values(room.players)[1];
+
+		if (playerOne.previousReactionTime < playerTwo.previousReactionTime) {
+			winningPlayer = playerOne.username;
+			playerOne.points++;
+
+		} else {
+			winningPlayer = playerTwo.username;
+			playerTwo.points++;
+		}
+
+		io.in(room).emit('game:round', winningPlayer, room.players);
+
+		playerOne.previousReactionTime = null;
+		playerTwo.previousReactionTime = null;
+		room.playedRounds++;
+
+		if(room.playedRounds < 10) {
+			timeAndPosition();
+			io.in(room).emit('game:start', waitingTime, virusPlace, room.players);
+
+		} else {
+			room.status = 'done';
+			io.in(room).emit('game:over', playerOne, playerTwo);
+		}
+	};
+}
