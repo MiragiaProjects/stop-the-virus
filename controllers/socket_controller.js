@@ -136,3 +136,17 @@ const userScore = function(reaction) {
 		}
 	};
 }
+
+// Export 
+module.exports = function(socket, _io) {
+	io = _io;
+
+	// handle user disconnect
+	socket.on('disconnect', userDisconnect);
+
+	// handle user joined
+	socket.on('user:joined', userJoined);
+
+	// handle user score
+	socket.on('game:round-result', userScore);
+}
