@@ -63,3 +63,23 @@ const userJoined = function(username, callback) {
 		virusPlace, 
 	});
 }
+
+// When a client disconnects
+const userDisconnect = function() {
+	
+	const room = rooms.find(lobby => lobby.players.hasOwnProperty(this.id));
+	
+	if(!room) {
+		return;
+	}
+	
+	if (room.status === 'queue') {
+		queue--;
+		room.numberOfPlayers--;
+		delete room.players[this.id];
+
+	} else if (room.status === 'started') {
+		room.numberOfPlayers--;
+		this.broadcast.to(room).emit('game:leave');
+	}
+}
