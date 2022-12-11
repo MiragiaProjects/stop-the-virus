@@ -1,0 +1,134 @@
+body {
+	background-color: rgb(183, 235, 135);
+}
+
+.hide {
+	display: none !important;
+}
+
+
+/* Enter screen */
+
+.waiting button {
+	width: 200px;
+}
+
+.text-center button {
+	width: 150px;
+	height: 120px;
+	background-color: crimson;
+}
+
+.text-center span {
+	font-size: x-large;
+}
+
+.enter-screen, .waiting {
+	height: 100vh;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+}
+
+.enter-form {
+	display: flex;
+	flex-flow: column;
+	gap: 0.5rem;
+}
+
+.enter-form label {
+	font-size: 1.5rem;
+}
+
+
+/* Game */
+
+.header-div {
+	width: 100%;
+}
+
+.game-board {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: center;
+}
+
+
+.score-board {
+	width: 100%;
+}
+
+
+.play-board {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	width: 80%;
+	height: 80vh;
+}
+
+
+.place {
+	height: 25%;
+	width: 25%;
+}
+
+.virus {
+	background-image: url('../icons/virus.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* Countdown */
+
+.countdown-container {
+	width: 100%;
+	background-color: rgba(100,100,100,0.3);
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	border-radius: 10px;
+}
+
+/* Results */
+
+.winResult {
+	padding: 1rem;
+	color: green;
+	background-color: rgb(168, 168, 168);
+}
+
+.loseResult {
+	padding: 1rem;
+	color: red;
+	background-color: rgb(168, 168, 168);
+}
+
+.won-round {
+	color: rgb(80, 155, 80);
+}
+
+.lost-round {
+	color: rgb(199, 76, 76);
+}
+
+#points {
+	padding: 1rem;
+	text-align: center;
+}
+
+#time-board {
+	padding: 1rem;
+	text-align: center;
+}
+
+#time-board p {
+	font-size: 1.3rem;
+}
