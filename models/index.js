@@ -1,0 +1,5 @@
+// Database connection
+
+module.exports = {
+
+}
