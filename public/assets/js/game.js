@@ -206,3 +206,31 @@ socket.on('game:over', (playerOne, playerTwo) => {
 	}
 })
 
+// Add username and join game and check status
+enterFormEl.addEventListener('submit', (e) => {
+	e.preventDefault()
+ 
+	username = enterFormEl.username.value
+	
+	socket.emit('user:joined', username, (status) => {
+		if (status.success) {
+
+			enterScreenEl.classList.add('hide')
+
+			waitingEl.classList.remove('hide')
+
+			if (status.startGame) {
+				waitingEl.classList.add('hide')
+				gameBoardEl.classList.remove('hide')
+				userScoreEl.innerText = `${username} score: ${userScore}`
+				opponentScoreEl.innerText = `${opponent} score: ${opponentScore}`
+				gameRound(status.waitingTime, status.virusPlace)
+			}
+			
+		} else if (!status.success) {
+			usernameErrorEl.classList.remove('hide')
+			usernameErrorEl.innerText = status.msg
+		}
+	})
+
+})
