@@ -1,4 +1,3 @@
-
 // Variables
 
 let io = null;
@@ -12,12 +11,6 @@ let waitingTime = 0;
 
 let virusPlace = null;
 
-
-// set a time and place a virus
-const timeAndPosition = () => {	
-	waitingTime = Math.round(Math.random()*4000 + 600);
-	virusPlace = Math.floor(Math.random() * 12);
-} 
 
 // User joining
 const userJoined = function(username, callback) {
@@ -90,6 +83,14 @@ const userDisconnect = function() {
 		this.broadcast.to(room).emit('game:leave');
 	}
 }
+
+
+// set a time and place a virus
+const timeAndPosition = () => {	
+	waitingTime = Math.round(Math.random()*4000 + 600);
+	virusPlace = Math.floor(Math.random() * 12);
+} 
+
 
 // Compare times to se who won
 const userScore = function(reaction) {

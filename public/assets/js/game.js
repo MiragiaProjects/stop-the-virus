@@ -40,20 +40,6 @@ let countdownInterval = null
 let countdown = 2
 
 
-// Will stop timer and see who won
-const stopTimer = () => {
-	
-	clearInterval(userTimer)
-	timePassed = Date.now() - beforeRound
-
-	playerTimeEl.innerText = `${Math.floor(timePassed/1000)} : ${timePassed%1000}`
-	randomPlaceEl.removeEventListener('click', stopTimer)
-	randomPlaceEl.classList.remove('virus')
-
-	socket.emit('game:round-result', timePassed)
-};
-
-
 // Will start a new round and place the virus
 const startTimer = (virusPlace) => {
 	
@@ -75,6 +61,19 @@ const startTimer = (virusPlace) => {
 
 	randomPlaceEl.addEventListener('click', stopTimer)
 	
+};
+
+// Will stop timer and see who won
+const stopTimer = () => {
+	
+	clearInterval(userTimer)
+	timePassed = Date.now() - beforeRound
+
+	playerTimeEl.innerText = `${Math.floor(timePassed/1000)} : ${timePassed%1000}`
+	randomPlaceEl.removeEventListener('click', stopTimer)
+	randomPlaceEl.classList.remove('virus')
+
+	socket.emit('game:round-result', timePassed)
 };
 
 // The countdown between rounds

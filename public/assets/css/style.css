@@ -20,9 +20,7 @@ body {
 	border: 1px solid black;
 }
 
-.text-center span {
-	font-size: x-large;
-}
+
 
 .enter-screen, .waiting {
 	height: 100vh;
@@ -37,10 +35,6 @@ body {
 	display: flex;
 	flex-flow: column;
 	gap: 0.5rem;
-}
-
-.enter-form label {
-	font-size: 1.5rem;
 }
 
 
@@ -120,12 +114,12 @@ body {
 	color: rgb(199, 76, 76);
 }
 
-#points {
+.points {
 	padding: 1rem;
 	text-align: center;
 }
 
-#time-board {
+.time-board {
 	padding: 1rem;
 	text-align: center;
 }
