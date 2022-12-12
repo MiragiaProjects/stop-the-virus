@@ -1,5 +1,0 @@
-// Database connection
-
-module.exports = {
-
-}
