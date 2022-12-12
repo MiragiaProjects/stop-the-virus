@@ -20,7 +20,6 @@
 	<!-- Div for the enter screen -->
 	<div id="enter-screen" class="enter-screen">
 		<h1>Stop the virus from spreading!</h1>
-
 		<p id="username-error" class="alert alert-danger hide"></p>
 		<!-- Form to enter a username and after enter the game -->
 		<form id="enter-form" class="enter-form mb-3">
@@ -31,10 +30,9 @@
 
 	<!-- Div for the waiting screen -->
 	<div id="waiting" class="waiting hide">
-			<h2>Waiting for opponent..</h2>
+		<h2>Waiting for opponent..</h2>
 		<!-- Button to leave the queue -->
 		<button onClick="window.location.reload()" type="button" class="btn btn-primary px-3 waiting-button">Cancel</button>
-
 	</div>
 
 	<!-- Div for the game -->
@@ -73,33 +71,30 @@
 					<p>Let's go!</p>
 					<p>Next round: <span>2</span>sec</p>
 				</div>
-				
-				<div class="place hide" id="1"></div>
-				<div class="place hide" id="2"></div>
-				<div class="place hide" id="3"></div>
-				<div class="place hide" id="4"></div>
-				<div class="place hide" id="5"></div>
-				<div class="place hide" id="6"></div>
-				<div class="place hide" id="7"></div>
-				<div class="place hide" id="8"></div>
-				<div class="place hide" id="9"></div>
-				<div class="place hide" id="10"></div>
-				<div class="place hide" id="11"></div>
-				<div class="place hide" id="12"></div>
+					<div class="place hide" id="1"></div>
+					<div class="place hide" id="2"></div>
+					<div class="place hide" id="3"></div>
+					<div class="place hide" id="4"></div>
+					<div class="place hide" id="5"></div>
+					<div class="place hide" id="6"></div>
+					<div class="place hide" id="7"></div>
+					<div class="place hide" id="8"></div>
+					<div class="place hide" id="9"></div>
+					<div class="place hide" id="10"></div>
+					<div class="place hide" id="11"></div>
+					<div class="place hide" id="12"></div>
+
+				</div>
 
 			</div>
 
-	</div>
-
-	<!-- Result div -->
-	<div id="results" class="waiting hide">
-		
-		<!-- Show user if they won or lost -->
-		<h2 id="winnersName"></h2>
-		<h2 id="result"></h2>
-
-		<button onClick="window.location.reload()" type="button" id="stop-queue" class="btn btn-info px-3">Leave</button>
-    </div>
+				<!-- Result div -->
+			<div id="results" class="waiting hide">
+				<!-- Show user if they won or lost -->
+				<h2 id="winnersName"></h2>
+				<h2 id="result"></h2>
+				<button onClick="window.location.reload()" type="button" id="stop-queue" class="btn btn-info px-3">Leave</button>
+    		</div>
 
 	<!-- Bootstrap 5 script -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
