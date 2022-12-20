@@ -39,6 +39,7 @@ let countdownInterval = null
 
 let countdown = 2
 
+/// GAME RELATED
 
 // Will start a new round and place the virus
 const startTimer = (virusPlace) => {
@@ -76,6 +77,21 @@ const stopTimer = () => {
 	socket.emit('game:round-result', timePassed)
 };
 
+// New round
+const gameRound = (waitingTime, virusPlace) => {
+
+	placeEl.forEach(place => {
+		place.classList.remove('virus')
+		place.classList.add('hide')
+	})
+
+	roundCountdownEl.classList.remove('hide')
+	countdownInterval = setInterval(countdownBeforeRound, 1000, waitingTime, virusPlace)
+
+};
+
+///COUNTDOWN
+
 // The countdown between rounds
 const countdownBeforeRound = (waitingTime, virusPlace) => {
 	
@@ -99,18 +115,7 @@ const countdownBeforeRound = (waitingTime, virusPlace) => {
 	}
 };
 
-// New round
-const gameRound = (waitingTime, virusPlace) => {
-
-	placeEl.forEach(place => {
-		place.classList.remove('virus')
-		place.classList.add('hide')
-	})
-
-	roundCountdownEl.classList.remove('hide')
-	countdownInterval = setInterval(countdownBeforeRound, 1000, waitingTime, virusPlace)
-
-};
+/// USERNAME AN FORM
 
 // Add username and join game and check status
 enterFormEl.addEventListener('submit', (e) => {
@@ -140,6 +145,8 @@ enterFormEl.addEventListener('submit', (e) => {
 	})
 
 })
+
+/// SOKCET ON
 
 // Socket ons sent from backend
 socket.on('game:round', (winner, players) => {
