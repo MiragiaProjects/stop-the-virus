@@ -11,7 +11,7 @@ let waitingTime = 0;
 
 let virusPlace = null;
 
-
+//JOIN AND DISCONNECT
 // User joining
 const userJoined = function(username, callback) {
 
@@ -84,6 +84,7 @@ const userDisconnect = function() {
 	}
 }
 
+// TIMERS AND SCORES
 
 // set a time and place a virus
 const timeAndPosition = () => {	
