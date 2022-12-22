@@ -146,7 +146,7 @@ enterFormEl.addEventListener('submit', (e) => {
 
 })
 
-/// SOKCET ON
+/// SOCKET ON
 
 // Socket ons sent from backend
 socket.on('game:round', (winner, players) => {
@@ -229,15 +229,15 @@ socket.on('game:over', (playerOne, playerTwo) => {
 	 }
 	
 	if(self.points > opponent.points) {
-		userResultEl.innerHTML = `Oh, yes! You won! Score: ${self.points} - ${opponent.points}`
+		userResultEl.innerHTML = `Oh, yes! You won! Score: You ${self.points}  Opponent ${opponent.points}`
 		userResultEl.classList.add('winResult')
 
 	} else if (opponent.points > self.points) {
-		userResultEl.innerHTML = `Oh, no! You lost! Score: ${self.points} - ${opponent.points}`
+		userResultEl.innerHTML = `Oh, no! You lost! Score: You ${self.points}  Opponent ${opponent.points}`
 		userResultEl.classList.add('loseResult')
 
 	} else if(self.points === opponent.points) {
-		userResultEl.innerHTML = `Oh. It's a tie! Score: ${self.points} - ${opponent.points}`
+		userResultEl.innerHTML = `Oh. It's a tie! Score: You ${self.points}  Opponent${opponent.points}`
 	}
 })
 
