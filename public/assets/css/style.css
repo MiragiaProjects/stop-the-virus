@@ -120,6 +120,6 @@ body {
 	text-align: center;
 }
 
-#time-board p {
+.time-board-p {
 	font-size: 1.3rem;
 }

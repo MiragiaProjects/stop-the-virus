@@ -17,7 +17,7 @@
 
 <body>
 
-	<!-- Div for the enter screen -->
+	<!-- Show for the enter screen -->
 	<div id="enter-screen" class="enter-screen">
 		<h1>Stop the virus from spreading!</h1>
 		<p id="username-error" class="alert alert-danger hide"></p>
@@ -27,18 +27,18 @@
 		</form>
 	</div>
 
-	<!-- Div for the waiting screen -->
+	<!-- Show for the waiting screen -->
 	<div id="waiting" class="waiting hide">
 		<h2>Waiting for opponent..</h2>
 		<button onClick="window.location.reload()" type="button" class="btn btn-primary px-3 waiting-button">Cancel</button>
 	</div>
 
-	<!-- Div for the game -->
+	<!-- Show for the game -->
 	<div id="game-board" class="game-board hide">
 		<div class="header-div">
 			<h1 class="text-center">Stop the virus from spreading!</h1>
 		</div>
-			<!-- Div Score field -->
+			<!-- Show Score field -->
 			<div id="score-board" class="score-board">
 				<div id="points" class="points">
 					<h4 id="user">Player score: 0</h4>
@@ -46,24 +46,24 @@
 				</div>
 				<div id="time-board" class="time-board">	
 					<div id="userTime">
-						<p>Your Time</p>
-						<h5>00:00:00</h5>
+						<p class="time-board-p">Your Time</p>
+						<h5 class="time-board-p">00:00:00</h5>
 					</div>
 					<div id="opponentTime">
-						<p>Opponent Time</p>
-						<h5>00:00:00</h5>
+						<p class="time-board-p">Opponent Time</p>
+						<h5 class="time-board-p">00:00:00</h5>
 					</div>
 				</div>
 			</div>
 
-				<!-- Surrender button -->
+				<!-- Show Give-up button -->
 			<div id="give-up" class="text-center">
 				<button onClick="window.location.reload()" type="button" class="btn px-3 give-up-button">
 					Give up
 				</button>
 			</div>
 
-			<!-- Game field -->
+			<!-- Show Game field -->
 			<div id="gaming-board" class="bg-primary play-board">
 				<div id="round-countdown" class="countdown-container hide">
 					<p>Let's go!</p>
@@ -84,7 +84,7 @@
 				</div>
 			</div>
 
-				<!-- Result div -->
+				<!-- Show Result -->
 			<div id="results" class="waiting hide">
 				<h2 id="winnersName"></h2>
 				<h2 id="result"></h2>
